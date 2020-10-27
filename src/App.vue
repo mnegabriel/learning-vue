@@ -1,7 +1,11 @@
 <template>
+  <h1>List of pokemons:</h1>
+  <PokeList 
+    v-bind:pokemonsData='pokemonsData' 
+    v-bind:loading="loading"
+  />
   <button type="button" @click="prevPage"> ⏪ </button>
   <button type="button" @click="nextPage"> ⏩ </button>
-  <PokeList v-bind:loading='loading' v-bind:pokemonsData='pokemonsData' />
 </template>
 
 <script>
@@ -46,17 +50,21 @@ export default {
     },
     
     nextPage() {
+      this.pokemonsData = []
       this.loadPokeList(this.next)
     },
 
     prevPage() {
-      if(this.previous){this.loadPokeList(this.previous)}
+      if(this.previous){
+        this.pokemonsData = []
+        this.loadPokeList(this.previous)
+      }
     }
   },
 
   created () {
     this.loadPokeList(this.apiUrl) 
-  }
+  },
   
 }
 </script>
@@ -66,5 +74,9 @@ export default {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+  html, body, #app{
+    height: 100vh;
+    width: 100vw;
   }
 </style>
