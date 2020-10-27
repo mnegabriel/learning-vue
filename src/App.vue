@@ -1,8 +1,7 @@
 <template>
   <button type="button" @click="prevPage"> ⏪ </button>
   <button type="button" @click="nextPage"> ⏩ </button>
-  <h4 v-if="loading"> L o a d i n g . . . </h4>
-  <PokeList v-bind:pokemonsData='pokemonsData' />
+  <PokeList v-bind:loading='loading' v-bind:pokemonsData='pokemonsData' />
 </template>
 
 <script>

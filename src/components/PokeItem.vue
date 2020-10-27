@@ -1,13 +1,13 @@
 <template>
-    <button @click="showDetails">
+    <a class='pokemon' @click="showDetails">
         <p>{{pokemon.name}}</p>
         <img v-bind:src="pokemon.sprites.front_default" />
-    </button>
+    </a>
 
     <div class='details' v-if='detailsOpen'>
         <h1>{{pokemon.name}}</h1>
         <img v-bind:src="pokemon.sprites.front_default" />
-        <button @click="hideDetails"> x </button>
+        <a @click="hideDetails"> x </a>
     </div>
 
 </template>
@@ -40,5 +40,25 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.pokemon {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+	background-color: antiquewhite;
+	justify-content: space-evenly;
+    transition-delay: height 3s;
+}
+
+
+
+.pokemon p {
+    text-transform: capitalize;
+    text-align: left;
+}
+.pokemon img {
+    flex: 1;
+    object-fit: contain;
 }
 </style>
