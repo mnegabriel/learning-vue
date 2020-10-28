@@ -60,7 +60,14 @@ export default {
     display:flex;
     width: 100%;
     align-items: center;
-justify-content: space-evenly;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+.sprites img {
+    margin: 0 -10px;
+    /* width: 5rem; */
 }
 
 </style>

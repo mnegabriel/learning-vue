@@ -78,5 +78,25 @@ export default {
   html, body, #app{
     height: 100vh;
     width: 100vw;
+    overflow-x: clip;
   }
+
+  .normal     { background-color: #A8A77A;}
+  .fighting   { background-color: #C22E28;}
+  .flying     { background-color: #A98FF3;}
+  .poison     { background-color: #A33EA1;}
+  .ground     { background-color: #E2BF65;}
+  .rock       { background-color: #B6A136;}
+  .bug        { background-color: #A6B91A;}
+  .ghost      { background-color: #735797;}
+  .steel      { background-color: #B7B7CE;}
+  .fire       { background-color: #EE8130;}
+  .water      { background-color: #6390F0;}
+  .grass      { background-color: #7AC74C;}
+  .electric   { background-color: #F7D02C;}
+  .psychic    { background-color: #F95587;}
+  .ice        { background-color: #96D9D6;}
+  .dragon     { background-color: #6F35FC;}
+  .fairy      { background-color: #D685AD;}
+  .dark       { background-color: #705746;}
 </style>

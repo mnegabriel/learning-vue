@@ -6,12 +6,11 @@
             name='list' 
             enter-active-class="animate__animated animate__fadeIn" 
             >
-
                 <li 
                 class="pokemonList__item" 
                 v-for="pokemon in pokemonsData"
-                v-bind:key='pokemon.id' >
-
+                v-bind:key='pokemon.id'
+                >
                     <PokeItem v-bind:pokemon="pokemon" />
                 </li>
             </transition-group>
@@ -68,14 +67,14 @@ section {
 }
 
 .pokemon-show-enter-active {
-    animation: bounce-in .5s;
+    animation: loading-overlay .5s;
 }
 
 .pokemon-show-leave-active {
-    animation: bounce-in .5s reverse;
+    animation: loading-overlay .5s reverse;
 }
 
-@keyframes bounce-in {
+@keyframes loading-overlay {
     0% { clip-path: circle(0 at 50% -50%); }
     100% { clip-path: circle(200% at 50% -50%); }
 }
