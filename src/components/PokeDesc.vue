@@ -166,8 +166,10 @@ export default {
 }
 
 .avatar img{
-    max-width: 12rem;
+    align-self: normal;
     flex: 1;
+    max-width: 14rem;
+    max-height: 14rem;
 }
 
 .sprites { 
