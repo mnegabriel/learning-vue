@@ -1,7 +1,7 @@
 <template>
     <section class='pokemonList'>
 
-        <ul>
+        <ul class='constrict'>
             <transition-group 
             name='list' 
             enter-active-class="animate__animated animate__fadeIn" 
@@ -29,9 +29,7 @@ import PokeItem from './PokeItem.vue'
 
 export default {
     name: "Pokelist",
-    components: {
-        PokeItem
-    },
+    components: { PokeItem },
     props: ["pokemonsData", 'loading'],
 }
 </script>
@@ -83,11 +81,7 @@ section {
 }
 
 @media(max-width: 480px){
-    section {
-        padding: 30px 0;
-    }
-    ul {
-        gap: 10px;
-    }
+    section { padding: 30px 0; }
+    ul { gap: 10px; }
 }
 </style>

@@ -78,7 +78,17 @@ export default {
   html, body, #app{
     height: 100vh;
     width: 100vw;
-    /* overflow-x: clip; */
+    font-family: var(--font-text);
+  }
+  :root{
+    --font-text: 'Quicksand', sans-serif;
+    --font-heading: 'Righteous', cursive;
+  }
+  .constrict {
+    width: 100%;
+    max-width: 875px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .normal     { background-color: #A8A77A;}

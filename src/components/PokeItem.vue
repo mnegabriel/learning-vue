@@ -25,12 +25,18 @@
             <img v-bind:src="pokemon.sprites.front_default" />
         </a>
 
-    <PokeDesc 
-        v-if='detailsOpen' 
-        v-bind:pokeChosen="pokemon"
-        v-bind:hideDetails="hideDetails"
-        v-bind:grabIndex="grabIndex"
-    />
+    <transition
+    enter-active-class="animate__animated animate__fadeIn" 
+    leave-active-class="animate__animated animate__fadeOut" 
+    >
+        <PokeDesc 
+            v-if='detailsOpen' 
+            v-bind:pokeChosen="pokemon"
+            v-bind:hideDetails="hideDetails"
+            v-bind:grabIndex="grabIndex"
+        />
+    </transition>
+
 </template>
 
 <script>
@@ -41,15 +47,13 @@ export default {
     props: ['pokemon'],
     components: { PokeDesc },
     data() {
-        return { 
-            detailsOpen: false,
-        }
+        return { detailsOpen: false }
     },
     methods: {
         showDetails(){ this.detailsOpen = true },
         hideDetails(){ this.detailsOpen = false },
         grabIndex(pokemon){
-            return JSON.stringify(pokemon.game_indices[pokemon.game_indices.length - 1].game_index)
+            return pokemon.game_indices[pokemon.game_indices.length - 1].game_index
         }
     }
 }
@@ -68,11 +72,6 @@ export default {
 	justify-content: space-evenly;
 }
 
-.pokemon > * {
-    /* width: calc(100% - 16px) */
-    /* padding: 8px; */
-}
-
 .pokemon__info{
     order: 2;
     flex: 1;
@@ -84,6 +83,8 @@ export default {
 
 .pokemon__name {
     text-transform: capitalize;
+    font-size: clamp(1rem, 2.7vw, 1.5rem);
+    font-family: var(--font-heading);
 }
 
 .pokemon img {
@@ -115,6 +116,17 @@ export default {
     top: 5px;
     right: 5px;
     font-size: .8rem;
+}
+
+.animate__animated.animate__fadeIn{
+    --animate-duration: 100ms;
+    --animate-delay:0;
+}
+
+.animate__animated.animate__fadeOut{
+    --animate-duration: 100ms;
+    --animate-delay:0;
+
 }
 
 @media (min-width: 700px){
@@ -155,6 +167,7 @@ export default {
 @media (min-width: 1070px){
     .pokemon__types{
         flex-direction: row;
+        justify-content: flex-end;
     }
 }
 
