@@ -1,11 +1,14 @@
 <template>
-    <transition name='pokemon-show' >
         <a class='pokemon' @click="showDetails">
 
             <div class='pokemon__info'>
 
                 <p class='pokemon__name'>{{pokemon.name}}</p>
-                <p class='pokemon__index'>n.{{pokemon.order}}</p>
+                <p class='pokemon__index'>n.{{grabIndex(pokemon)}}</p>
+
+                <div class='stats'>
+
+                </div>
 
                 <div class="pokemon__types" >
                     <div 
@@ -21,12 +24,12 @@
             </div>
             <img v-bind:src="pokemon.sprites.front_default" />
         </a>
-    </transition>
 
     <PokeDesc 
         v-if='detailsOpen' 
         v-bind:pokeChosen="pokemon"
         v-bind:hideDetails="hideDetails"
+        v-bind:grabIndex="grabIndex"
     />
 </template>
 
@@ -44,7 +47,10 @@ export default {
     },
     methods: {
         showDetails(){ this.detailsOpen = true },
-        hideDetails(){ this.detailsOpen = false }
+        hideDetails(){ this.detailsOpen = false },
+        grabIndex(pokemon){
+            return JSON.stringify(pokemon.game_indices[pokemon.game_indices.length - 1].game_index)
+        }
     }
 }
 </script>
@@ -60,6 +66,11 @@ export default {
     flex-direction: column;
 	background-color: antiquewhite;
 	justify-content: space-evenly;
+}
+
+.pokemon > * {
+    /* width: calc(100% - 16px) */
+    /* padding: 8px; */
 }
 
 .pokemon__info{
@@ -95,22 +106,67 @@ export default {
     display: none
 }
 
+.pokemon__index {
+    background-color: #323232;
+    color: #ffffff;
+    padding: 3px 8px;
+    border-radius: 3px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: .8rem;
+}
+
 @media (min-width: 700px){
 
-    .pokemon p {
-        text-align: left;
-        flex: 1;
-
+    .pokemon {
+        flex-direction: row;
+    }
+    .pokemon__info,
+    .pokemon__types{
+        flex-direction: column;
     }
 
-    .pokemon img {
+    .pokemon__name {
+        align-self: flex-start;
+    }
+
+    .pokemon__types{
+        position:initial;
+        gap: 5px;
+    }
+
+    .pokemon__type{
+        border-radius: 4px;
+    }
+
+    .pokemon__type p {
+        position:initial;
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 3px 0;
+    }
+
+    .pokemon__index{
+        right: initial;
+        left: 5px;
+    }
+@media (min-width: 1070px){
+    .pokemon__types{
+        flex-direction: row;
+    }
+}
+
+
+    /* .pokemon img {
 
         clip-path: inset(0 13px 13px 0px);
         width: 8rem;
         position: absolute;
         bottom: -13px;
         right: -13px;
-    }
+    } */
     
 }
 </style>

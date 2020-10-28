@@ -3,7 +3,7 @@
         <h1>{{pokeChosen.name}}</h1>
         <p> 
             Index: 
-            {{pokeChosen.id}}
+            {{grabIndex(pokeChosen)}}
         </p>
         <img v-bind:src="pokeChosen.sprites.front_default" />
 
@@ -22,7 +22,7 @@
 
 export default {
     name: 'PokeDesc',
-    props: [ 'pokeChosen', 'hideDetails' ],
+    props: [ 'pokeChosen', 'hideDetails' , 'grabIndex'],
     data() {
         return { images: Object.values(this.pokeChosen.sprites) }
     },

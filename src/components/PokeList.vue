@@ -6,8 +6,7 @@
             name='list' 
             enter-active-class="animate__animated animate__fadeIn" 
             >
-                <li 
-                class="pokemonList__item" 
+                <li
                 v-for="pokemon in pokemonsData"
                 v-bind:key='pokemon.id'
                 >
@@ -81,5 +80,14 @@ section {
 
 .animate__animated.animate__fadeIn{
     --animate-delay: 1s;
+}
+
+@media(max-width: 480px){
+    section {
+        padding: 30px 0;
+    }
+    ul {
+        gap: 10px;
+    }
 }
 </style>
