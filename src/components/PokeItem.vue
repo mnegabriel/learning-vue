@@ -9,13 +9,8 @@
     <PokeDesc 
         v-if='detailsOpen' 
         v-bind:pokeChosen="pokemon"
+        v-bind:hideDetails="hideDetails"
     />
-    <!-- <div class='details' v-if='detailsOpen'>
-        <h1>{{pokemon.name}}</h1>
-        <img v-bind:src="pokemon.sprites.front_default" />
-        <a @click="hideDetails"> x </a>
-    </div> -->
-
 </template>
 
 <script>
@@ -38,14 +33,6 @@ export default {
 </script>
 
 <style scoped>
-.details {
-    background-color: rgb(255, 224, 224);
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
 
 .pokemon {
     width: 100%;
