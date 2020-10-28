@@ -4,12 +4,6 @@
 
             <div class='identity'>
                 <h1>{{pokeChosen.name}}</h1>
-                <p> 
-                    Index: 
-                    {{grabIndex(pokeChosen)}}
-                </p>
-
-                <h2>Base Stats</h2>
 
                 <div class='base-stats'>
                     <div 
@@ -26,6 +20,10 @@
             </div>
 
             <div class='avatar'>
+                <p> 
+                    Index: 
+                    {{grabIndex(pokeChosen)}}
+                </p>
                 <img v-bind:src="pokeChosen.sprites.front_default" />
             </div>
 
@@ -80,9 +78,9 @@ export default {
 }
 
 .details .constrict{
-    border-top: 10px solid white;
+    border-top: 10px solid var(--col-white);
     padding: 30px;
-    background-color: rgb(143, 25, 44);
+    background-color: var(--col-red);
     display: grid;
     grid-template-areas:
         'NAME AVAT AVAT'
@@ -93,49 +91,56 @@ export default {
 
 .identity { 
     grid-area: NAME; 
-    border-top: 3px solid white;
+    border-top: 3px solid var(--col-white);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 50px;
     position: relative;
 
-    color: white;
+    color: var(--col-white);
+    font-size: .8rem;
 }
 
 .identity h1{
     font-family: var(--font-heading);
     text-transform: uppercase;
-    background-color: white;
-    color: #630000;
-}
-.identity > p{
-    position: absolute;
-    right: 0;
-    top: 30px;
-    background-color: rgba(255, 255, 240, 0.24) ;
-    padding: 4px 8px;
-    font-weight: bold;
+    background-color: var(--col-white);
+    color:var(--col-red);
 }
 
 .base-stats{
-    background-color: #630000af;
+    grid-area:STAT;
+    background-color: var(--col-red-dark);
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    position:relative;
 
 }
+.base-stats::before {
+    content: 'Base Stats';
+    position: absolute;
+    top: -24px;
+    left: 0;
+    font-size: 1.2rem;
+    color: var(--col-red);
+    padding: 0 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: var(--col-white);
+} 
 
 .base-stat{
     display: flex;
     align-items: flex-end;
 }
 .base-stat h5 {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--col-white);
     flex: 1;
 }
 .base-stat p {
-    background-color: white;
+    background-color: var(--col-white);
     color: #630000;
     width: 45px;
     text-align: center;
@@ -143,12 +148,21 @@ export default {
 }
 
 .avatar { 
-    border-top: 3px solid white;
+    border-top: 3px solid var(--col-white);
     grid-area: AVAT; 
     width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
+    position: relative;
+}
+.avatar > p{
+    position: absolute;
+    right: 0;
+    background-color: var(--col-white-transparent) ;
+    padding: 4px 8px;
+    font-weight: bold;
+    color: var(--col-white);
 }
 
 .avatar img{
@@ -163,36 +177,48 @@ export default {
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    padding: 0 10px;
-    background-color: rgb(78, 0, 0);
+    padding: 0 40px;
+    background-color: var(--col-red-darker);
     margin-bottom: 30px;
     position: relative;
 }
 .sprites::before {
     content: 'Sprites';
     position: absolute;
-    top: -15px;
+    top: -30px;
     left: 0;
     font-size: 1.6rem;
-    color: rgb(78, 0, 0);
+    color: var(--col-red);
     width: 100%;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: white;
+    background-color: var(--col-white);
 } 
 
 .btn-close { 
     grid-area: CLOS;
     width:100%;
     height: 50%;
-    border-top: 3px solid white;
-    background-color: rgba(255, 255, 240, 0.24);
-    color: rgb(143, 25, 44);
+    border-top: 3px solid var(--col-white);
+    background-color: var(--col-white-transparent);
+    color: var(--col-red-dark);
     display:flex;
     justify-content: center;
     align-items: center;
     font-size: 4rem;
     font-family: var(--font-heading);
+    border-bottom: 3px solid var(--col-red-dark)
+}
+
+@media(max-width:400px){
+    .details .constrict {
+        padding: 0;
+    }
+}
+@media(max-width:780px){
+    .sprites {
+        margin: 0;
+    }
 }
 
 

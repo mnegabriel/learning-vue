@@ -47,8 +47,8 @@ ul {
 section {
     padding: 30px 10px;
     position: relative;
-    height: 80vh;
-    background-color: lawngreen;
+    height: 70vh;
+    background-color: var(--col-gray-lighter);
 }
 
 #loading {

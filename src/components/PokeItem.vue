@@ -68,8 +68,7 @@ export default {
     padding: 8px;
     display: flex;
     flex-direction: column;
-	background-color: antiquewhite;
-	justify-content: space-evenly;
+	background-color: var(--col-white);
 }
 
 .pokemon__info{
@@ -85,6 +84,7 @@ export default {
     text-transform: capitalize;
     font-size: clamp(1rem, 2.7vw, 1.5rem);
     font-family: var(--font-heading);
+    color: var(--col-gray)
 }
 
 .pokemon img {

@@ -1,12 +1,20 @@
 <template>
-  <h1>List of pokemons:</h1>
+  <h1 class="pokedex">Pokedex</h1>
   <PokeList 
     v-bind:pokemonsData='pokemonsData' 
     v-bind:loading="loading"
   />
-  <button type="button" @click="prevPage"> ⏪ </button>
-  <button type="button" @click="nextPage"> ⏩ </button>
+  <div class="bttns constrict">
+
+    <button type="button" @click="prevPage"> Prev. </button>
+    <button type="button" @click="nextPage"> Next </button>
+  </div>
+
+  <footer>
+    <p>Created with <a href="https://vuejs.org/">Vuejs</a> by <a href="https://github.com/mnegabriel">Gabriel Dantas</a></p>
+  </footer>
 </template>
+
 
 <script>
 import PokeList from './components/PokeList'
@@ -80,9 +88,21 @@ export default {
     width: 100vw;
     font-family: var(--font-text);
   }
+
   :root{
     --font-text: 'Quicksand', sans-serif;
     --font-heading: 'Righteous', cursive;
+    --col-red: #7e0606;
+    --col-red-dark: #640000;
+    --col-red-darker: #4d0606;
+    --col-gray-lighter: #e2dfe8;
+    --col-gray-light: #a2a1a3;
+    --col-gray: #4e4958;
+    --col-gray-dark: #38343f;
+    --col-gray-darker: #29272c;
+    --col-white: #f3f3f3;
+    --col-white-transparent: #f3f3f338;
+    --col-vue: #42b983;
   }
   .constrict {
     width: 100%;
@@ -90,6 +110,55 @@ export default {
     margin-left: auto;
     margin-right: auto;
   }
+
+  #app{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pokedex {
+    font-family: var(--font-heading);
+    text-align: center;
+    padding-top: 20px;
+    color: var(--col-gray-dark)
+  }
+
+  .bttns {
+    display: flex;
+    height: 7vh;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .bttns button{
+    background: none;
+    border: 2px solid var(--col-gray-light);
+    color: var(--col-gray-light);
+    width: 30%;
+    height: 100%;
+max-height: 84px;
+font-size: 1.4rem;
+  }
+
+  .bttns button:active{
+    background-color: var(--col-gray-light);
+    color: var(--col-white);
+  }
+
+  footer {
+    background-color: var(--col-vue);
+    padding: 18px 0;
+    text-align: center;
+    color: var(--col-gray-dark);
+    margin-bottom: 0;
+    margin-top: auto;
+  }
+  footer a {
+    text-decoration: none;
+    color: var(--col-white)
+  }
+  footer a:hover { text-decoration: underline;}
 
   .normal     { background-color: #A8A77A;}
   .ground     { background-color: #E2BF65;}
